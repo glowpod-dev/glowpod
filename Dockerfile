@@ -28,7 +28,7 @@ RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH \
 # Glowpod Hub in one container, like Rancher's Docker install: K3s inside,
 # and the Hub on it. It needs docker run --privileged. Build it with
 #   docker build --target hub -t glowpod-hub .
-FROM rancher/k3s:v1.36.5-k3s1 AS hub
+FROM rancher/k3s:v1.37.1-k3s1 AS hub
 ARG VERSION
 LABEL org.opencontainers.image.title="Glowpod Hub" \
       org.opencontainers.image.description="Glowpod Hub with K3s inside: many Kubernetes clusters, one sign-in" \
