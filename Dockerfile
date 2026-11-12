@@ -43,7 +43,7 @@ ENTRYPOINT ["/bin/glowpod", "hub", "run"]
 
 # kubectl and helm for the Hub's browser shell, checked against their
 # published checksums. Fetched on the build machine for the target arch.
-FROM --platform=$BUILDPLATFORM alpine:3.24.3 AS shell-tools
+FROM --platform=$BUILDPLATFORM alpine:3.24.4 AS shell-tools
 ARG TARGETARCH
 ARG KUBECTL_VERSION=v1.37.1
 ARG HELM_VERSION=v4.3.1
@@ -59,7 +59,7 @@ RUN curl -fsSLo kubectl "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/
 # The Hub's browser shell: a short-lived pod per person and cluster, with
 # kubectl, helm, jq, yq and glowpod set up to act as them. Runs as non-root
 # with a read-only root filesystem. Build it with --target shell.
-FROM alpine:3.24.3 AS shell
+FROM alpine:3.24.4 AS shell
 ARG VERSION
 LABEL org.opencontainers.image.title="Glowpod shell" \
       org.opencontainers.image.description="kubectl, helm and friends for Glowpod Hub's browser shell" \
